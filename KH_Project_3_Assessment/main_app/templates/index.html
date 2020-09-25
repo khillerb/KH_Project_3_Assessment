@@ -32,11 +32,11 @@
             {% endfor %}
         </tbody>
         </table>
-    {% endif %}        
-                
-            
-    
+    {% endif %}                  
     <hr>
-    <a href="{% url 'add_widget' %}">Add A Widget</a>
+    <form method="POST">
+        {{ widget_form.as_p}}
+        <input type="submit" value = "Add a Widget">
+    </form>
 </body>
 </html>
