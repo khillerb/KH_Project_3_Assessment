@@ -26,7 +26,7 @@
             {% for widget in widgets %}
             <tr>
                 <td>{{ widget.description }}</td>
-                <td>{{ widget.name }}</td>
+                <td>{{ widget.quantity }}</td>
                 <td><button href="{% url 'delete_widget' widget.id %}">Delete</button></td>
             </tr>
             {% endfor %}
@@ -34,7 +34,8 @@
         </table>
     {% endif %}                  
     <hr>
-    <form method="POST">
+    <form method="POST" action="{% url 'add_widget'%}">
+        {% csrf_token %}
         {{ widget_form.as_p}}
         <input type="submit" value = "Add a Widget">
     </form>
