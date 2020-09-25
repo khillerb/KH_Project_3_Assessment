@@ -1,5 +1,8 @@
 import django.urls import path
 from . import views
+
 urlpatterns = [
     path('',views.index, name = 'index')
+    path('addwidget/',views.WidgetCreate.as_view(), name = 'add_widget')
+    path('deletewidget/<int:id>',views.delete, name = 'delete_widget')
 ]

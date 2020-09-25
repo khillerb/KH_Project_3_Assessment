@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    {% load static %}
     <title>Keenan's Practice Assessment</title>
 </head>
 <body>
+    <h1>Widget List:</h1>
+
+    {% if widgets|length == 0 %}
+        <hr>
+        <p>No items on the list yet...</p>
+    {% else %}
+    <table class="tg">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody> 
+            {% for widget in widgets %}
+            <tr>
+                <td>{{ widget.description }}</td>
+                <td>{{ widget.name }}</td>
+                <td><button href="{% url 'delete_widget' widget.id %}">Delete</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    {% endif %}        
+                
+            
     
+    <hr>
+    <a href="{% url 'add_widget' %}">Add A Widget</a>
 </body>
 </html>
